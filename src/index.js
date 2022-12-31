@@ -8,6 +8,6 @@ const counter1 = (window.counter1 = reactive(obj));
 const counter2 = (window.counter2 = reactive(obj));
 
 effect(() => {
-  console.log('count change...' + counter1);
-  console.log('count change...' + counter2);
+  console.log('count change...' + counter1.count);
+  console.log('count change...' + counter2.count);
 });
