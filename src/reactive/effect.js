@@ -8,7 +8,7 @@ export const effect = (fn) => {
       activeEffect = effectFn;
       return fn();
     } finally {
-      // TODO effect try-catch finally...
+      activeEffect = undefined;
     }
   };
 
