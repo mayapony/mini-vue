@@ -1,12 +1,14 @@
 import { isObject } from '../utils';
 import { track, trigger } from './effect';
 
+const proxyMap = new WeakMap();
+
 export const reactive = (target) => {
   // target must be object
   if (!isObject(target)) return target;
-
   // reactive(reactive(obj))
   if (isReactive(target)) return target;
+  if (proxyMap.has(target)) return proxyMap.get(target);
 
   // proxy intercepts
   const proxy = new Proxy(target, {
@@ -23,6 +25,7 @@ export const reactive = (target) => {
     },
   });
 
+  proxyMap.set(target, proxy);
   return proxy;
 };
 

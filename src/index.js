@@ -1,14 +1,13 @@
 import { effect } from './reactive/effect';
 import { reactive } from './reactive/reactive';
 
-const counter = (window.counter = reactive(
-  reactive({
-    count1: 0,
-    count2: 0,
-  })
-));
+const obj = {
+  count: 0,
+};
+const counter1 = (window.counter1 = reactive(obj));
+const counter2 = (window.counter2 = reactive(obj));
 
 effect(() => {
-  console.log(counter);
-  console.log('count change...' + counter);
+  console.log('count change...' + counter1);
+  console.log('count change...' + counter2);
 });
